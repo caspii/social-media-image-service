@@ -4,10 +4,10 @@ MAINTAINER Nikolai R Kristiansen <nikolaik@gmail.com>
 # Install node prereqs, nodejs and yarn
 # Ref: https://deb.nodesource.com/setup_12.x
 # Ref: https://yarnpkg.com/en/docs/install
-RUN \
-  apt-get update && \
-  apt-get install -yqq nodejs yarn libmemcached-dev && \
-  pip install -U pip
+#RUN \
+#  apt-get update && \
+#  apt-get install -yqq nodejs yarn libmemcached-dev && \
+#  pip install -U pip
 
 # Copy local code to the container image.
 ENV APP_HOME /app
