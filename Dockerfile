@@ -1,5 +1,4 @@
-FROM python:buster
-MAINTAINER Nikolai R Kristiansen <nikolaik@gmail.com>
+FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7
 
 # Install node prereqs, nodejs and yarn
 # Ref: https://deb.nodesource.com/setup_12.x
