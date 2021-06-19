@@ -1,5 +1,5 @@
-FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7
-
+#FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7
+FROM python:3.8
 # Adding trusting keys to apt for repositories
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 
