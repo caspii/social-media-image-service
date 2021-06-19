@@ -8,19 +8,22 @@ FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7
 #  apt-get install -yqq nodejs yarn libmemcached-dev && \
 #  pip install -U pip
 
+# Install Chrome for Selenium
+RUN curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o /chrome.deb
+RUN dpkg -i /chrome.deb || apt-get install -yf
+RUN rm /chrome.deb
+
+# Install chromedriver for Selenium
+RUN curl https://chromedriver.storage.googleapis.com/2.31/chromedriver_linux64.zip -o /usr/local/bin/chromedriver
+RUN chmod +x /usr/local/bin/chromedriver
+
 # Copy local code to the container image.
 ENV APP_HOME /app
 WORKDIR $APP_HOME
 COPY . ./
 
-# Install yarn
-# RUN yarn install
-
 # Install production dependencies.
 RUN pip install -r requirements.txt
-
-# Build assets
-# RUN flask assets build
 
 # Run the web service on container startup. Here we use the gunicorn
 # webserver, with one worker process and 8 threads.
