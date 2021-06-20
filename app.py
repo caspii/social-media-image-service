@@ -7,6 +7,7 @@ app = Flask(__name__)
 @app.route('/')
 def view_landing():
     return "Welcome to screenshot service"
+    logging.info(f'Root url called')
 
 @app.route('/preview_image/<token>.png')
 def preview_image(token):
@@ -15,18 +16,10 @@ def preview_image(token):
     """
 
     from splinter import Browser
-    from selenium.webdriver.chrome.options import Options
-    chrome_options = Options()
-    chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument('--disable-extensions')
-    chrome_options.add_argument('--hide-scrollbars')
-    if app.config["ENV"] == "production":
-        executable_path = {'executable_path': '/usr/bin/chromedriver'}
-    else:
-        executable_path = {'executable_path': '/opt/homebrew/bin/chromedriver'}
-    browser = Browser('chrome', headless=True, options=chrome_options, **executable_path)
-    browser.driver.set_window_size(1200, 630)
-    url = f'https://keepthescore.co/board/{token}/'
+    browser = Browser('firefox', headless=True)
+    #browser.driver.set_window_size(1200, 630)
+    #url = f'https://keepthescore.co/board/{token}/'
+    url = 'https://cnn.com'
     browser.visit(url)
  #   logging.debug(f'Opengraph preview image: visiting {url}')
     temp_dir = '/tmp/'
