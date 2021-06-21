@@ -19,7 +19,7 @@ def preview_image(token):
     browser = Browser('firefox', headless=True)
     #browser.driver.set_window_size(1200, 630)
     #url = f'https://keepthescore.co/board/{token}/'
-    url = 'https://cnn.com'
+    url = 'https://keethescore.co'
     browser.visit(url)
  #   logging.debug(f'Opengraph preview image: visiting {url}')
     temp_dir = '/tmp/'
