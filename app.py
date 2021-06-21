@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def view_landing():
-    return "Welcome to screenshot service"
+    return "Welcome to the screenshot service!"
     logging.info(f'Root url called')
 
 @app.route('/preview_image/<token>.png')
