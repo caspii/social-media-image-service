@@ -25,4 +25,4 @@ COPY . ./
 RUN pip install -r requirements.txt
 
 # Run the web service on container startup.
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 wsgi:app
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 2 wsgi:app
