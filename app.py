@@ -24,8 +24,10 @@ def preview_image(token):
     temp_dir = '/tmp/'
     path = f'{temp_dir}{token}'
     screenshot_path = browser.screenshot(path)
+    browser.quit()
     app.logger.info(f'Generated social media preview image {token}')
     return send_file(screenshot_path, mimetype='image/png')
+
 
 if __name__ == '__main__':
     app.run(port=5001, debug=True)
