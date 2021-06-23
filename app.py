@@ -14,7 +14,6 @@ def view_landing():
 
 
 @app.route('/image/<path:encoded_url>.png')
-@app.route('/image/<path:encoded_url>')
 def generate_image(encoded_url):
     """
     Returns an image (PNG) of a URL. The URL is encoded in the path of the image being requested.
