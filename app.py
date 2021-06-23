@@ -14,6 +14,7 @@ def view_landing():
 
 
 @app.route('/image/<path:encoded_url>.png')
+@app.route('/image/<path:encoded_url>')
 def generate_image(encoded_url):
     """
     Returns an image (PNG) of a URL. The URL is encoded in the path of the image being requested.
@@ -21,7 +22,7 @@ def generate_image(encoded_url):
     url_to_fetch = urllib.parse.unquote_plus(encoded_url)
     domain = os.environ.get('DOMAIN', 'https://casparwre.de')
     if not url_to_fetch.startswith(domain):
-        app.info(f'Not allowed to generate preview for this domain: {url_to_fetch}')
+        app.logger.info(f'Not allowed to generate preview for this domain: {url_to_fetch}')
         abort(405)
     app.logger.debug(f'Generating preview for {url_to_fetch}')
     browser.driver.set_window_size(1200, 630)
